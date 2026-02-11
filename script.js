@@ -51,3 +51,21 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         }
     });
 });
+
+// Legal page TOC active state
+const tocLinks = document.querySelectorAll('.legal-toc a');
+if (tocLinks.length > 0) {
+    const tocObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    tocLinks.forEach((link) => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`.legal-toc a[href="#${entry.target.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        },
+        { threshold: 0.1, rootMargin: '-100px 0px -60% 0px' }
+    );
+    document.querySelectorAll('.legal-content h2[id]').forEach((heading) => tocObserver.observe(heading));
+}
