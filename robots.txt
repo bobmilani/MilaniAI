@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/*.png
+Disallow: /assets/*.jpg
+Disallow: /assets/*.ico
+
+Sitemap: https://milaniai.tech/sitemap.xml
