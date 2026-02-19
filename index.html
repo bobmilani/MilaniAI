@@ -516,6 +516,28 @@
                         <a href="terms.html">Terms of Service</a>
                     </div>
                 </div>
+                <div class="easter-egg" id="easter-egg">
+                    <button class="vinyl-btn" id="vinyl-btn" aria-label="Play the MilaniAI Manifesto">
+                        <svg class="vinyl-icon" viewBox="0 0 48 48" width="32" height="32">
+                            <circle cx="24" cy="24" r="23" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+                            <circle cx="24" cy="24" r="18" fill="none" stroke="#2a2a2a" stroke-width="0.5"/>
+                            <circle cx="24" cy="24" r="14" fill="none" stroke="#2a2a2a" stroke-width="0.5"/>
+                            <circle cx="24" cy="24" r="10" fill="none" stroke="#2a2a2a" stroke-width="0.5"/>
+                            <circle cx="24" cy="24" r="6" fill="#333" stroke="#444" stroke-width="0.5"/>
+                            <circle cx="24" cy="24" r="2" fill="var(--accent)"/>
+                        </svg>
+                    </button>
+                    <div class="vinyl-player" id="vinyl-player">
+                        <p class="vinyl-caption">Our AI is futuristic, but our soul is 1965.<br>Here's the MilaniAI Manifesto — Dylan style.</p>
+                        <div class="vinyl-controls">
+                            <div class="vinyl-progress-bar" id="vinyl-progress-bar">
+                                <div class="vinyl-progress" id="vinyl-progress"></div>
+                            </div>
+                            <span class="vinyl-time" id="vinyl-time">0:00 / 0:30</span>
+                        </div>
+                    </div>
+                    <audio id="manifesto-audio" preload="none" src="assets/manifesto.mp3"></audio>
+                </div>
             </div>
         </div>
     </footer>

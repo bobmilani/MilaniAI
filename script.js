@@ -52,6 +52,47 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
+// Easter egg vinyl player
+const vinylBtn = document.getElementById('vinyl-btn');
+const vinylPlayer = document.getElementById('vinyl-player');
+const audio = document.getElementById('manifesto-audio');
+const vinylProgress = document.getElementById('vinyl-progress');
+const vinylProgressBar = document.getElementById('vinyl-progress-bar');
+const vinylTime = document.getElementById('vinyl-time');
+
+if (vinylBtn && audio) {
+    vinylBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            vinylBtn.classList.add('spinning');
+            vinylPlayer.classList.add('visible');
+        } else {
+            audio.pause();
+            vinylBtn.classList.remove('spinning');
+        }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        vinylProgress.style.width = pct + '%';
+        const cur = Math.floor(audio.currentTime);
+        const dur = Math.floor(audio.duration) || 30;
+        vinylTime.textContent = `${Math.floor(cur / 60)}:${String(cur % 60).padStart(2, '0')} / ${Math.floor(dur / 60)}:${String(dur % 60).padStart(2, '0')}`;
+    });
+
+    audio.addEventListener('ended', () => {
+        vinylBtn.classList.remove('spinning');
+        vinylProgress.style.width = '0%';
+        vinylTime.textContent = '0:00 / 0:30';
+    });
+
+    vinylProgressBar.addEventListener('click', (e) => {
+        const rect = vinylProgressBar.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+    });
+}
+
 // Legal page TOC active state
 const tocLinks = document.querySelectorAll('.legal-toc a');
 if (tocLinks.length > 0) {

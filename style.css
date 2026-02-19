@@ -866,6 +866,99 @@ section {
     color: var(--text-secondary);
 }
 
+/* === Easter Egg Vinyl Player === */
+.easter-egg {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+}
+
+.vinyl-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0.4;
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+}
+
+.vinyl-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.vinyl-btn.spinning .vinyl-icon {
+    animation: spin-vinyl 2s linear infinite;
+}
+
+.vinyl-btn.spinning {
+    opacity: 1;
+}
+
+@keyframes spin-vinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vinyl-player {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.vinyl-player.visible {
+    display: flex;
+    animation: fade-in-player 0.4s ease;
+}
+
+@keyframes fade-in-player {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.vinyl-caption {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+.vinyl-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vinyl-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.vinyl-progress {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.vinyl-time {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
 /* === Legal Pages (Privacy & Terms) === */
 .legal-page {
     padding-top: 100px;
@@ -1140,6 +1233,14 @@ section {
         flex-direction: column;
         gap: 12px;
         align-items: flex-start;
+    }
+
+    .easter-egg {
+        flex-wrap: wrap;
+    }
+
+    .vinyl-player {
+        max-width: 100%;
     }
 
     .hero-stats {
