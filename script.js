@@ -83,7 +83,7 @@ if (vinylBtn && audio) {
     audio.addEventListener('ended', () => {
         vinylBtn.classList.remove('spinning');
         vinylProgress.style.width = '0%';
-        vinylTime.textContent = '0:00 / 0:30';
+        vinylTime.textContent = '0:00 / 3:58';
     });
 
     vinylProgressBar.addEventListener('click', (e) => {
